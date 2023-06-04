@@ -31,12 +31,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'category',
+    'account',
+    'store',
+    'carts',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +67,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'category.context_processors.menu_links', 
+                'carts.context_processors.counter',
             ],
         },
     },
@@ -69,6 +76,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tuandeptrai.wsgi.application'
 
+AUTH_PASSWORD_VALIDATORS = 'account.Account'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -122,3 +130,8 @@ STATIC_ROOT =BASE_DIR /'static'
 STATICFILES_DIRS = [
     'tuandeptrai/static',
 ]
+
+# mediafile configuration
+MEDIA_URL = '/media/'
+MEDIA_ROOT =BASE_DIR /'media'
+
