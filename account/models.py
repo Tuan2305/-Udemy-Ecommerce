@@ -18,10 +18,12 @@ class MyAccountManager(BaseUserManager):
         user.set_password(password)
         user.save(using=self._db)
         return user
-    def create_superuser(self, first_name, last_name, username, email, password=None):
+    
+    def create_superuser(self, first_name, last_name, username, email, password):
         user = self.create_superuser(
             email = self.normalize_email(email),
             username = username,
+            password= password,
             first_name = first_name,
             last_name = last_name,
         )
