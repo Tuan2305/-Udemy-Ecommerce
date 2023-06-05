@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import RegistrationForm
 from .models import Account
 from django.contrib import messages, auth
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 def register(request):
@@ -25,6 +26,10 @@ def register(request):
         'form':form,
     }
     return render(request,'account/register.html',context)
+
+@csrf_exempt
+def my_view(request):
+   return render(request,'account/login.html')
 
 def login(request):
     if request.method == "POST":
